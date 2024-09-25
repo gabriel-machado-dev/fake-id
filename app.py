@@ -1,6 +1,5 @@
 from faker import Faker
-import json 
-
+import os
 
 
 # Colors
@@ -32,8 +31,8 @@ def print_title():
         {1}|___|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|___|{0} 
         {1}(_____)                                                          (_____){0}
                   
-         {6})    /\__/\ 
-         {6}( = (˶ᵔ ᵕ ᵔ˶)
+         {6})    /\__/\ 
+         {6}(  = (˶ᵔ ᵕ ᵔ˶)
          {1}-------{6}U{1}-{6}U{1}----------------
          {1}|                        |       |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|
          {1}|  {3}Code Author: {2}Gabriel Machado  {0}{1}|       {3}GitHub: {2}https://github.com/gabriel-machado-dev{0}
@@ -42,10 +41,9 @@ def print_title():
          {1}--------------------------                        {6}\ (˶ᵔ ᵕ ᵔ˶) /{0}
                                                             {6}\         /{0}
 
-        '''.format(DEFAULT, GREEN, RED,YELLOW2
-                   ,YELLOW, BLINK, MAGENTA, CYAN))
+        '''.format(DEFAULT, GREEN, RED, YELLOW2, YELLOW, BLINK, MAGENTA, CYAN))
 
-def generate_full_name():
+def generate_full_id():
     names = {}
 
     quantity = int(input("Enter the quantity Fake ID's you want to generate: "))    
@@ -58,7 +56,6 @@ def generate_full_name():
         names[name]['Address'] = fake.address().replace('\n', ', ')
         names[name]['Phone Number'] = fake.phone_number()
 
-    # print(json.dumps(names, indent=4, ensure_ascii=False))
     return names
 
 def generate_strucutured_data(data):
@@ -70,42 +67,32 @@ def generate_strucutured_data(data):
         print(f'{YELLOW2}Address: {DEFAULT}')
         for i, address in enumerate(data[name]["Address"].split(',')):
             if i == 0:
-                print(f'{" "* 5}Rua: {address}')
+                print(f'{" "* 5}{CYAN}Rua: {DEFAULT}{address}')
             elif i == 1:
-                if address.isdigit():
-                    print(f'{" "* 5}Complemento: {address}')
+                if address.strip().isdigit():
+                    print(f'{" "* 5}{CYAN}Número: {DEFAULT}{address}')
                 else:
-                    print(f'{" "* 5}Número: {address}')    
+                    print(f'{" "* 5}{CYAN}Complemento: {DEFAULT}{address}')    
             elif i == 2:
-                print(f'{" "* 5}Bairro: {address}')
+                print(f'{" "* 5}{CYAN}Bairro: {DEFAULT}{address}')
             elif i == 3:   
-                parts = address.split()
-                cep = parts[0]
-                estado = parts[-1]
-                cidade = ' '.join(parts[1:-2])
-    
-                print(f'{" "* 5}CEP: {cep}')
-                print(f'{" "* 5}Cidade: {cidade}')
-                print(f'{" "* 5}Estado: {estado}')
+                print(f'{" "* 5}{CYAN}CEP / ESTADO / CIDADE: {DEFAULT}{address}')
 
-        print('-'*50)
+        print('-' * 50)
 
-print_title()
-names = generate_full_name()
-generate_strucutured_data(names)
+def main():
+    print_title()
+    data = generate_full_id()
+    generate_strucutured_data(data)
 
-'''NOTE:
-
-1. Gerar os dados num dicionario sendo o nome a chave e o valor o dado gerado
-2. Salvar os dados gerados em um arquivo json ou csv
-3. Exibir os dados de forma estruturada no terminal 
-  - Exemplo: 
-    Nome: Gabriel Machado
-      -> CPF: 123.456.789-10
-      -> Email: gabrieldiasmachado@gmail.com
-      -> Endereço: Rua dos Bobos, 0 - São Paulo - SP
-      -> Telefone: (11) 99999-9999 
-4. Adicionar uma opção para gerar um dado específico
-5. Adicionar uma opção para gerar todos os dados
-
-'''
+if __name__ == '__main__':
+    main()  
+    while True:
+        print(f'{YELLOW2}Do you want to generate more Fake ID\'s?{DEFAULT}')
+        answer = input(f'{YELLOW2}Yes{DEFAULT} or {RED}No{DEFAULT}: ')
+        if answer.lower() == 'yes':
+            os.system('clear') if os.name == 'posix' else os.system('cls')
+            main()
+        else:
+            print(f'{YELLOW2}Thank you for using the Fake ID Generator!{DEFAULT}')
+            break
