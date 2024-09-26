@@ -111,6 +111,7 @@ def instructions():
     print(f'{YELLOW2}2. The program will generate the Fake ID\'s and display them on the screen.{DEFAULT}')
     print(f'{YELLOW2}3. If you want to generate more Fake ID\'s, enter "yes".{DEFAULT}')
     print(f'{YELLOW2}4. If you want to exit the program, enter "no".{DEFAULT}')
+    print('')
     print('Note: The program generates Fake ID\'s with Brazilian data.')
     print('Note: There\'s no limit to the quantity of Fake ID\'s you can generate.')    
     print('') 
