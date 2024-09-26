@@ -45,15 +45,15 @@ The script uses ANSI escape codes to format the output with colors.
 
 ### Example Output
 
-Name: Asafe Costela
-CPF: 063.548.129-42
-Email: elisacavalcante@gmail.org
-Phone Number: +55 61 9707-1154
-Address: 
-     Street: Lagoa Abreu
-     Number:  11
-     Neighborhood:  Mirtes
-     CEP | State | City:  98534-328 Garcia / PB
+- Name: Asafe Costela
+- CPF: 063.548.129-42
+- Email: elisacavalcante@gmail.org
+- Phone Number: +55 61 9707-1154
+- Address: 
+    -  Street: Lagoa Abreu
+    -  Number:  11
+    -  Neighborhood:  Mirtes
+    -  CEP | State | City:  98534-328 Garcia / PB
 
 
 
