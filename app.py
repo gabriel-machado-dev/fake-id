@@ -66,17 +66,26 @@ def generate_strucutured_data(data):
         print(f'{YELLOW2}Phone Number: {DEFAULT}{data[name]["Phone Number"]}')
         print(f'{YELLOW2}Address: {DEFAULT}')
         for i, address in enumerate(data[name]["Address"].split(',')):
-            if i == 0:
-                print(f'{" "* 5}{CYAN}Rua: {DEFAULT}{address}')
-            elif i == 1:
-                if address.strip().isdigit():
-                    print(f'{" "* 5}{CYAN}Número: {DEFAULT}{address}')
-                else:
-                    print(f'{" "* 5}{CYAN}Complemento: {DEFAULT}{address}')    
-            elif i == 2:
-                print(f'{" "* 5}{CYAN}Bairro: {DEFAULT}{address}')
-            elif i == 3:   
-                print(f'{" "* 5}{CYAN}CEP / ESTADO / CIDADE: {DEFAULT}{address}')
+
+            length_address = len(data[name]["Address"].split(','))  
+
+            if length_address == 4:
+                if i == 0:
+                    print(f'{" " * 5}{CYAN}Street: {DEFAULT}{address}')
+                elif i == 1:
+                        print(f'{" " * 5}{CYAN}Number: {DEFAULT}{address}')
+                elif i == 2:  
+                    print(f'{" " * 5}{CYAN}Neighborhood: {DEFAULT}{address}')
+                elif i == 3:
+                    print(f'{" " * 5}{CYAN}CEP | State | City: {DEFAULT}{address}')   
+
+            if length_address == 3:   
+                if i == 0:
+                    print(f'{" " * 5}{CYAN}Street: {DEFAULT}{address}')
+                elif i == 1:
+                    print(f'{" " * 5}{CYAN}Neighborhood: {DEFAULT}{address}') 
+                elif i == 2:  
+                    print(f'{" " * 5}{CYAN}CEP | State | City: {DEFAULT}{address}')
 
         print('-' * 50)
 
