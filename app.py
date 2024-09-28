@@ -1,4 +1,5 @@
 from faker import Faker
+from time import sleep
 import os
 
 # Colors
@@ -76,11 +77,14 @@ def generate_full_id():
 
 def generate_strucutured_data(data):
     for name in data:
+        
+        print('-' * 50)
         print(f'{YELLOW2}{BOLD}Name: {DEFAULT}{name}')
         print(f'{YELLOW2}{BOLD}CPF: {DEFAULT}{data[name]["CPF"]}')
         print(f'{YELLOW2}{BOLD}Email: {DEFAULT}{data[name]["Email"]}'.replace('@example', '@gmail'))
         print(f'{YELLOW2}{BOLD}Phone Number: {DEFAULT}{data[name]["Phone Number"]}')
         print(f'{YELLOW2}{BOLD}Address: {DEFAULT}')
+
         for i, address in enumerate(data[name]["Address"].split(',')):
 
             length_address = len(data[name]["Address"].split(','))
@@ -129,9 +133,11 @@ if __name__ == '__main__':
         answer = input(f'{YELLOW2}Yes{DEFAULT} or {RED}No{DEFAULT}: ').lower().strip()
         
         if answer == 'yes':
+            os.system('clear') if os.name == 'posix' else os.system('cls')
             main()
         elif answer == 'no':
             print(f'{YELLOW2}See you later!{DEFAULT}')
+            sleep(5)
             break
         else:
             print(f'{RED}Invalid value!{DEFAULT}')
