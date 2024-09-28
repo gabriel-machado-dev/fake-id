@@ -50,6 +50,7 @@ def generate_full_id():
     try:
         
         quantity = int(input("Enter the quantity Fake ID's you want to generate: "))
+        print('')
 
         if quantity <= 0:   
 
@@ -76,9 +77,10 @@ def generate_full_id():
     return names
 
 def generate_strucutured_data(data):
-    for name in data:
-        
-        print('-' * 50)
+    for i, name in enumerate(data):
+
+        print(f'{YELLOW2}Fake ID {i + 1}:{DEFAULT}')
+        print(f"{CYAN}{'-' * 50}{DEFAULT}")
         print(f'{YELLOW2}{BOLD}Name: {DEFAULT}{name}')
         print(f'{YELLOW2}{BOLD}CPF: {DEFAULT}{data[name]["CPF"]}')
         print(f'{YELLOW2}{BOLD}Email: {DEFAULT}{data[name]["Email"]}'.replace('@example', '@gmail'))
@@ -107,7 +109,8 @@ def generate_strucutured_data(data):
                 elif i == 2:
                     print(f'{" " * 5}{CYAN}{BOLD}CEP | State | City: {DEFAULT}{address}')
 
-        print('-' * 50)
+        print(f"{CYAN}{'-' * 50}{DEFAULT}")
+        print('')
 
 def instructions():
     print(f'{YELLOW2}Instructions:{DEFAULT}')
