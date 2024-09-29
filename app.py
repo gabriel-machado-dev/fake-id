@@ -99,7 +99,10 @@ def generate_strucutured_data(data):
                 elif i == 2:
                     print(f'{" " * 5}{CYAN}{BOLD}Neighborhood: {DEFAULT}{address}')
                 elif i == 3:
-                    print(f'{" " * 5}{CYAN}{BOLD}CEP | State | City: {DEFAULT}{address}')
+                    parts = address.split()
+                    print(f'{" " * 5}{CYAN}{BOLD}CEP: {DEFAULT}{parts[0]}')
+                    print(f'{" " * 5}{CYAN}{BOLD}State: {DEFAULT}{" ".join(parts[1:-2])}')  
+                    print(f'{" " * 5}{CYAN}{BOLD}City: {DEFAULT}{parts[-1]}')   
 
             if length_address == 3:
                 if i == 0:
@@ -107,7 +110,10 @@ def generate_strucutured_data(data):
                 elif i == 1:
                     print(f'{" " * 5}{CYAN}{BOLD}Neighborhood: {DEFAULT}{address}')
                 elif i == 2:
-                    print(f'{" " * 5}{CYAN}{BOLD}CEP | State | City: {DEFAULT}{address}')
+                    parts = address.split()
+                    print(f'{" " * 5}{CYAN}{BOLD}CEP: {DEFAULT}{parts[0]}')
+                    print(f'{" " * 5}{CYAN}{BOLD}State: {DEFAULT}{" ".join(parts[1:-2])}')  
+                    print(f'{" " * 5}{CYAN}{BOLD}City: {DEFAULT}{parts[-1]}')
 
         print(f"{CYAN}{'-' * 50}{DEFAULT}")
         print('')
